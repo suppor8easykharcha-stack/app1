@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #2b95d6 100%);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 0.2);
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            background: var(--primary-gradient);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 20px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #764ba2;
+            font-size: 50px;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .profile-tagline {
+            font-size: 16px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        /* About Description */
+        .about-description {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--card-border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            line-height: 1.6;
+        }
+
+        /* Highlights Section */
+        .highlights-section {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .highlight-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px 10px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6ec4, #7873f5, #4facfe);
+            z-index: -1;
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .highlight-card:hover::before {
+            opacity: 0.7;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .highlight-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight-number {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .highlight-title {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Expertise Section */
+        .expertise-section {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+        }
+
+        .expertise-list {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--card-border);
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .expertise-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .expertise-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .expertise-item:hover .expertise-icon {
+            transform: scale(1.1);
+        }
+
+        .expertise-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+        }
+
+        .cta-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--card-border);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .cta-text {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            color: #764ba2;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .cta-button:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="page-title">About Me</h1>
+            <p class="page-subtitle">Who I am & what I do</p>
+        </header>
+
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h2 class="profile-name">Alex Morgan</h2>
+            <p class="profile-tagline">Creative Professional / Freelancer / Designer / Developer</p>
+        </section>
+
+        <!-- About Description -->
+        <section class="about-description fade-in">
+            <p>I'm a passionate creative professional with expertise in digital design and development. I specialize in creating beautiful, functional interfaces that solve real problems for users.</p>
+            <br>
+            <p>With a background in both design and development, I bridge the gap between aesthetics and functionality to deliver exceptional digital experiences.</p>
+        </section>
+
+        <!-- Highlights Section -->
+        <section class="highlights-section fade-in">
+            <h2 class="section-title">My Journey</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="far fa-calendar-check"></i>
+                    </div>
+                    <div class="highlight-number">5+</div>
+                    <div class="highlight-title">Years Experience</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="highlight-number">120+</div>
+                    <div class="highlight-title">Projects Completed</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="highlight-number">85+</div>
+                    <div class="highlight-title">Happy Clients</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section class="expertise-section fade-in">
+            <h2 class="section-title">What I'm good at</h2>
+            <div class="expertise-list">
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div class="expertise-text">UI/UX Design</div>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="expertise-text">Web Development</div>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="expertise-text">Mobile App Design</div>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="expertise-text">Brand Identity</div>
+                </div>
+                <div class="expertise-item">
+                    <div class="expertise-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="expertise-text">Digital Strategy</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-card">
+            <h3 class="cta-title">Need something done?</h3>
+            <p class="cta-text">I'm open for freelance work or collaborations.</p>
+            <button class="cta-button">
+                <i class="fas fa-paper-plane"></i>
+                Contact Me
+            </button>
+        </div>
+    </section>
+
+    <script>
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Button interaction
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            alert('Contact form opening...');
+        });
+
+        // Icon glow effect on tap
+        document.querySelectorAll('.expertise-icon, .highlight-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.style.boxShadow = '0 0 15px rgba(255, 255, 255, 0.7)';
+                setTimeout(() => {
+                    this.style.boxShadow = 'none';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

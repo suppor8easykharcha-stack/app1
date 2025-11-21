@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .summary-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+        }
+
+        /* Summary Info Box */
+        .summary-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out 0.2s both;
+        }
+
+        .summary-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .role {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Highlights Section */
+        .highlights {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 12px;
+        }
+
+        .highlight-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 18px 12px;
+            text-align: center;
+            flex: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease-out 0.4s both;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .highlight-card i {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight-number {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .highlight-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Contact Options */
+        .contact-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .contact-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 18px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.6s ease-out 0.6s both;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .contact-btn i {
+            font-size: 22px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:active i {
+            transform: translateY(3px);
+        }
+
+        .contact-btn span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Email Button */
+        .email:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(234, 67, 53, 0.4);
+        }
+
+        /* Phone Button */
+        .phone:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(66, 133, 244, 0.4);
+        }
+
+        /* Social Button */
+        .social:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 193, 7, 0.4);
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+            animation: slideUp 0.6s ease-out 0.8s both;
+        }
+
+        .cta-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .cta-box p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border: none;
+            border-radius: 50px;
+            padding: 16px 32px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 15px rgba(79, 172, 254, 0.4);
+            width: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 0 0 20px rgba(79, 172, 254, 0.6);
+        }
+
+        .cta-button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            animation: slideUp 0.6s ease-out 1s both;
+        }
+
+        .footer p {
+            margin-bottom: 16px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .social-icons a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        /* Animation for elements */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="summary-container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Thank You for Visiting</h1>
+            <p>Here's a quick summary of who I am</p>
+        </div>
+
+        <!-- Summary Info Box -->
+        <div class="summary-box">
+            <div class="name">Alex Johnson</div>
+            <div class="role">Full-Stack Developer & UI/UX Designer</div>
+            <div class="description">
+                I create stunning digital experiences with clean code and thoughtful design. 
+                With expertise in modern web technologies and a passion for user-centered design, 
+                I help businesses transform their ideas into engaging digital products.
+            </div>
+        </div>
+
+        <!-- Highlights Section -->
+        <div class="highlights">
+            <div class="highlight-card">
+                <i class="fas fa-project-diagram"></i>
+                <div class="highlight-number">48+</div>
+                <div class="highlight-label">Projects Completed</div>
+            </div>
+            <div class="highlight-card">
+                <i class="fas fa-award"></i>
+                <div class="highlight-number">5+</div>
+                <div class="highlight-label">Years Experience</div>
+            </div>
+            <div class="highlight-card">
+                <i class="fas fa-users"></i>
+                <div class="highlight-number">36</div>
+                <div class="highlight-label">Clients Served</div>
+            </div>
+        </div>
+
+        <!-- Contact Options -->
+        <div class="contact-options">
+            <a href="#" class="contact-btn whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="#" class="contact-btn email">
+                <i class="far fa-envelope"></i>
+                <span>Email</span>
+            </a>
+            <a href="#" class="contact-btn phone">
+                <i class="fas fa-phone-alt"></i>
+                <span>Call</span>
+            </a>
+            <a href="#" class="contact-btn social">
+                <i class="fas fa-share-alt"></i>
+                <span>Social Media</span>
+            </a>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="cta-box">
+            <h3>Let's work together!</h3>
+            <p>I'm open to freelance projects and collaborations.</p>
+            <button class="cta-button">Contact Me Now</button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">© 2025 Alex Johnson — All Rights Reserved</p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth interaction animations
+        document.querySelectorAll('.contact-btn, .cta-button').forEach(button => {
+            button.addEventListener('mousedown', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            button.addEventListener('mouseup', function() {
+                this.style.transform = '';
+            });
+            
+            button.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            button.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+
+        // Add glow effect when buttons are tapped
+        document.querySelectorAll('.contact-btn, .cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.5)';
+                setTimeout(() => {
+                    this.style.boxShadow = '';
+                }, 500);
+            });
+        });
+
+        // Animate highlight cards on hover
+        document.querySelectorAll('.highlight-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .skills-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Skill Cards */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(124, 181, 255, 0.4);
+        }
+
+        .skill-card:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .skill-card i {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .skill-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .skill-card p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        /* Progress Bars */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* Tools Section */
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .tools-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 5px;
+            margin-bottom: 30px;
+            scrollbar-width: none;
+        }
+
+        .tools-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+
+        .tool-item i {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .tool-item span {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Soft Skills Section */
+        .soft-skills {
+            margin-bottom: 30px;
+        }
+
+        .soft-skill-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .soft-skill-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .soft-skill-item i {
+            font-size: 18px;
+            margin-right: 12px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .soft-skill-item span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-box h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border: none;
+            border-radius: 50px;
+            padding: 14px 28px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 15px rgba(79, 172, 254, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 0 0 20px rgba(79, 172, 254, 0.6);
+        }
+
+        .cta-button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Animation for elements */
+        .skill-card, .soft-skill-item, .tool-item, .cta-box {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.15s; }
+        .skill-card:nth-child(3) { animation-delay: 0.2s; }
+        .skill-card:nth-child(4) { animation-delay: 0.25s; }
+        .skill-card:nth-child(5) { animation-delay: 0.3s; }
+        .skill-card:nth-child(6) { animation-delay: 0.35s; }
+        .soft-skill-item:nth-child(1) { animation-delay: 0.4s; }
+        .soft-skill-item:nth-child(2) { animation-delay: 0.45s; }
+        .soft-skill-item:nth-child(3) { animation-delay: 0.5s; }
+        .soft-skill-item:nth-child(4) { animation-delay: 0.55s; }
+        .cta-box { animation-delay: 0.6s; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hide sections by default */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="skills-container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Skills</h1>
+            <p>What I'm good at</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <div class="tab active" data-tab="technical">Technical</div>
+            <div class="tab" data-tab="creative">Creative</div>
+            <div class="tab" data-tab="tools">Tools</div>
+            <div class="tab" data-tab="soft">Soft Skills</div>
+        </div>
+
+        <!-- Technical Skills Section -->
+        <div class="section active" id="technical">
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Frontend & Backend</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="90"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>App Development</h3>
+                    <p>iOS & Android</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="85"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Database Design</h3>
+                    <p>SQL & NoSQL</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="80"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Services</h3>
+                    <p>AWS & Azure</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="75"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cybersecurity</h3>
+                    <p>Network Protection</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="70"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Neural Networks</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="65"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Creative Skills Section -->
+        <div class="section" id="creative">
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>User Experience</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="85"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-pen-nib"></i>
+                    <h3>Graphic Design</h3>
+                    <p>Visual Identity</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="90"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Editing</h3>
+                    <p>Post-production</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="80"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Photography</h3>
+                    <p>Portrait & Product</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="75"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-feather-alt"></i>
+                    <h3>Content Writing</h3>
+                    <p>Blogs & Articles</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="85"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Digital Marketing</h3>
+                    <p>Social Media</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" data-width="70"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Section -->
+        <div class="section" id="tools">
+            <h2 class="section-title">Tools I Use</h2>
+            <div class="tools-scroll">
+                <div class="tool-item">
+                    <i class="fab fa-figma"></i>
+                    <span>Figma</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-adobe"></i>
+                    <span>Photoshop</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-code"></i>
+                    <span>VS Code</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-film"></i>
+                    <span>DaVinci</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-sketch"></i>
+                    <span>Illustrator</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-canva"></i>
+                    <span>Canva</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-git-alt"></i>
+                    <span>Git</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-slack"></i>
+                    <span>Slack</span>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 30px;">Development Tools</h2>
+            <div class="tools-scroll">
+                <div class="tool-item">
+                    <i class="fab fa-react"></i>
+                    <span>React</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-node-js"></i>
+                    <span>Node.js</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-python"></i>
+                    <span>Python</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-html5"></i>
+                    <span>HTML5</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <span>CSS3</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-database"></i>
+                    <span>MongoDB</span>
+                </div>
+                <div class="tool-item">
+                    <i classfas fa-server"></i>
+                    <span>MySQL</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soft Skills Section -->
+        <div class="section" id="soft">
+            <div class="soft-skills">
+                <div class="soft-skill-item">
+                    <i class="fas fa-comments"></i>
+                    <span>Communication</span>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Problem Solving</span>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-palette"></i>
+                    <span>Creativity</span>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>Time Management</span>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-users"></i>
+                    <span>Team Collaboration</span>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-handshake"></i>
+                    <span>Leadership</span>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-brain"></i>
+                    <span>Critical Thinking</span>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Adaptability</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-box">
+            <h3>Need help with something?</h3>
+            <button class="cta-button">Hire Me</button>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all sections
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected section
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Animate progress bars when they become visible
+        function animateProgressBars() {
+            document.querySelectorAll('.progress-bar').forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
+
+        // Initialize progress bars
+        animateProgressBars();
+
+        // Add interaction animations
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mousedown', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            card.addEventListener('mouseup', function() {
+                this.style.transform = '';
+            });
+            
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            card.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+
+        // Add glow effect when icons are tapped
+        document.querySelectorAll('.skill-card i, .tool-item i').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.8)';
+                setTimeout(() => {
+                    this.style.textShadow = '';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

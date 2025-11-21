@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .contact-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+        }
+
+        /* Contact Buttons */
+        .contact-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .contact-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(124, 181, 255, 0.4);
+        }
+
+        .contact-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .contact-btn i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:active i {
+            transform: translateY(3px);
+        }
+
+        .contact-btn span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp {
+            --glow-color: rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Email Button */
+        .email {
+            --glow-color: rgba(234, 67, 53, 0.5);
+        }
+
+        .email:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(234, 67, 53, 0.4);
+        }
+
+        /* Phone Button */
+        .phone {
+            --glow-color: rgba(66, 133, 244, 0.5);
+        }
+
+        .phone:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(66, 133, 244, 0.4);
+        }
+
+        /* Instagram Button */
+        .instagram {
+            --glow-color: rgba(225, 48, 108, 0.5);
+        }
+
+        .instagram:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(225, 48, 108, 0.4);
+        }
+
+        /* Facebook Button */
+        .facebook {
+            --glow-color: rgba(59, 89, 152, 0.5);
+        }
+
+        .facebook:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(59, 89, 152, 0.4);
+        }
+
+        /* LinkedIn Button */
+        .linkedin {
+            --glow-color: rgba(0, 119, 181, 0.5);
+        }
+
+        .linkedin:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(0, 119, 181, 0.4);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item i {
+            width: 24px;
+            margin-right: 12px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(76, 175, 80, 0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .availability i {
+            margin-right: 6px;
+            font-size: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        .copyright {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* Animation for elements */
+        .contact-btn, .info-box {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .contact-btn:nth-child(1) { animation-delay: 0.1s; }
+        .contact-btn:nth-child(2) { animation-delay: 0.15s; }
+        .contact-btn:nth-child(3) { animation-delay: 0.2s; }
+        .contact-btn:nth-child(4) { animation-delay: 0.25s; }
+        .contact-btn:nth-child(5) { animation-delay: 0.3s; }
+        .contact-btn:nth-child(6) { animation-delay: 0.35s; }
+        .info-box { animation-delay: 0.4s; }
+        .footer { animation-delay: 0.5s; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Contact Me</h1>
+            <p>Get in touch instantly</p>
+        </div>
+
+        <!-- Contact Buttons -->
+        <div class="contact-buttons">
+            <a href="#" class="contact-btn whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="#" class="contact-btn email">
+                <i class="far fa-envelope"></i>
+                <span>Email</span>
+            </a>
+            <a href="#" class="contact-btn phone">
+                <i class="fas fa-phone-alt"></i>
+                <span>Call</span>
+            </a>
+            <a href="#" class="contact-btn instagram">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            <a href="#" class="contact-btn facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </a>
+            <a href="#" class="contact-btn linkedin">
+                <i class="fab fa-linkedin-in"></i>
+                <span>LinkedIn</span>
+            </a>
+        </div>
+
+        <!-- Quick Info Box -->
+        <div class="info-box">
+            <div class="info-item">
+                <i class="fas fa-user"></i>
+                <span>Alex Johnson</span>
+            </div>
+            <div class="info-item">
+                <i class="far fa-envelope"></i>
+                <span>alex.johnson@example.com</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>San Francisco, CA</span>
+            </div>
+            <div class="info-item">
+                <i class="far fa-clock"></i>
+                <div>
+                    <span>Available for new projects</span>
+                    <div class="availability">
+                        <i class="fas fa-circle"></i>
+                        Open for Work
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <p>I usually respond within 24 hours</p>
+            <div class="copyright">© 2023 Portfolio App. All rights reserved.</div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth interaction animations
+        document.querySelectorAll('.contact-btn').forEach(button => {
+            button.addEventListener('mousedown', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            button.addEventListener('mouseup', function() {
+                this.style.transform = '';
+            });
+            
+            button.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            button.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
