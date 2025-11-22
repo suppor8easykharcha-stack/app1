@@ -300,9 +300,231 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Edit Button */
+        .edit-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 12px 20px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .edit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+            border-radius: 24px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .close-button {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .modal-button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .save-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .save-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .generate-button {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .generate-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .export-button {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .export-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 12px 20px;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+            z-index: 3000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
 <body>
+    <!-- Edit Button -->
+    <button class="edit-button">
+        <i class="fas fa-edit"></i> Edit Summary
+    </button>
+
+    <!-- Main Content -->
     <div class="summary-container">
         <!-- Header Section -->
         <div class="header">
@@ -312,49 +534,45 @@
 
         <!-- Summary Info Box -->
         <div class="summary-box">
-            <div class="name">Alex Johnson</div>
-            <div class="role">Full-Stack Developer & UI/UX Designer</div>
-            <div class="description">
-                I create stunning digital experiences with clean code and thoughtful design. 
-                With expertise in modern web technologies and a passion for user-centered design, 
-                I help businesses transform their ideas into engaging digital products.
-            </div>
+            <div class="name">{{name}}</div>
+            <div class="role">{{role}}</div>
+            <div class="description">{{summary}}</div>
         </div>
 
         <!-- Highlights Section -->
         <div class="highlights">
             <div class="highlight-card">
                 <i class="fas fa-project-diagram"></i>
-                <div class="highlight-number">48+</div>
+                <div class="highlight-number">{{projects}}</div>
                 <div class="highlight-label">Projects Completed</div>
             </div>
             <div class="highlight-card">
                 <i class="fas fa-award"></i>
-                <div class="highlight-number">5+</div>
+                <div class="highlight-number">{{years}}</div>
                 <div class="highlight-label">Years Experience</div>
             </div>
             <div class="highlight-card">
                 <i class="fas fa-users"></i>
-                <div class="highlight-number">36</div>
+                <div class="highlight-number">{{clients}}</div>
                 <div class="highlight-label">Clients Served</div>
             </div>
         </div>
 
         <!-- Contact Options -->
         <div class="contact-options">
-            <a href="#" class="contact-btn whatsapp">
+            <a href="{{whatsapp}}" class="contact-btn whatsapp">
                 <i class="fab fa-whatsapp"></i>
                 <span>WhatsApp</span>
             </a>
-            <a href="#" class="contact-btn email">
+            <a href="mailto:{{email}}" class="contact-btn email">
                 <i class="far fa-envelope"></i>
                 <span>Email</span>
             </a>
-            <a href="#" class="contact-btn phone">
+            <a href="tel:{{phone}}" class="contact-btn phone">
                 <i class="fas fa-phone-alt"></i>
                 <span>Call</span>
             </a>
-            <a href="#" class="contact-btn social">
+            <a href="#" class="contact-btn social" id="social-share">
                 <i class="fas fa-share-alt"></i>
                 <span>Social Media</span>
             </a>
@@ -370,18 +588,353 @@
         <!-- Footer -->
         <div class="footer">
             <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-dribbble"></i></a>
-                <a href="#"><i class="fab fa-behance"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="{{linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                <a href="{{github}}"><i class="fab fa-github"></i></a>
+                <a href="{{dribbble}}"><i class="fab fa-dribbble"></i></a>
+                <a href="{{behance}}"><i class="fab fa-behance"></i></a>
+                <a href="{{twitter}}"><i class="fab fa-twitter"></i></a>
             </div>
-            <p class="copyright">© 2025 Alex Johnson — All Rights Reserved</p>
+            <p class="copyright">© 2025 {{name}} — All Rights Reserved</p>
         </div>
     </div>
 
+    <!-- Modal Editor -->
+    <div class="modal-overlay" id="editor-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Edit Portfolio Summary</h2>
+                <button class="close-button" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="portfolio-form">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" id="name" placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Role / Job Title</label>
+                    <input type="text" class="form-input" id="role" placeholder="Enter your role or job title">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Summary Description</label>
+                    <textarea class="form-input" id="summary" placeholder="Write a brief description about yourself"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Projects Completed</label>
+                        <input type="text" class="form-input" id="projects" placeholder="e.g. 48+">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Years Experience</label>
+                        <input type="text" class="form-input" id="years" placeholder="e.g. 5+">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Clients Served</label>
+                    <input type="text" class="form-input" id="clients" placeholder="e.g. 36">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">WhatsApp Link</label>
+                    <input type="text" class="form-input" id="whatsapp" placeholder="https://wa.me/yournumber">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" id="email" placeholder="your.email@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" id="phone" placeholder="+1234567890">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Social Media Links</label>
+                    <input type="text" class="form-input" id="linkedin" placeholder="LinkedIn URL">
+                    <input type="text" class="form-input" id="github" placeholder="GitHub URL" style="margin-top: 10px;">
+                    <input type="text" class="form-input" id="dribbble" placeholder="Dribbble URL" style="margin-top: 10px;">
+                    <input type="text" class="form-input" id="behance" placeholder="Behance URL" style="margin-top: 10px;">
+                    <input type="text" class="form-input" id="twitter" placeholder="Twitter URL" style="margin-top: 10px;">
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="modal-button export-button" id="export-zip">
+                        <i class="fas fa-file-archive"></i> Export ZIP
+                    </button>
+                    <button type="button" class="modal-button generate-button" id="generate-link">
+                        <i class="fas fa-link"></i> Generate Link
+                    </button>
+                    <button type="submit" class="modal-button save-button">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Include JSZip library for ZIP export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    
     <script>
-        // Add smooth interaction animations
+        // Default template data
+        const defaultData = {
+            name: "Alex Johnson",
+            role: "Full-Stack Developer & UI/UX Designer",
+            summary: "I create stunning digital experiences with clean code and thoughtful design. With expertise in modern web technologies and a passion for user-centered design, I help businesses transform their ideas into engaging digital products.",
+            projects: "48+",
+            years: "5+",
+            clients: "36",
+            whatsapp: "#",
+            email: "alex.johnson@example.com",
+            phone: "+1234567890",
+            linkedin: "#",
+            github: "#",
+            dribbble: "#",
+            behance: "#",
+            twitter: "#"
+        };
+
+        // DOM Elements
+        const editButton = document.querySelector('.edit-button');
+        const modal = document.getElementById('editor-modal');
+        const closeModal = document.getElementById('close-modal');
+        const portfolioForm = document.getElementById('portfolio-form');
+        const generateLinkBtn = document.getElementById('generate-link');
+        const exportZipBtn = document.getElementById('export-zip');
+        const toast = document.getElementById('toast');
+        const socialShareBtn = document.getElementById('social-share');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load data from localStorage or use default
+            let userData = localStorage.getItem('portfolioData');
+            
+            if (userData) {
+                userData = JSON.parse(userData);
+            } else {
+                userData = defaultData;
+                localStorage.setItem('portfolioData', JSON.stringify(userData));
+            }
+            
+            // Check for URL parameters (for shared links)
+            const urlParams = new URLSearchParams(window.location.search);
+            const dataParam = urlParams.get('data');
+            
+            if (dataParam) {
+                try {
+                    const decodedData = JSON.parse(atob(dataParam));
+                    userData = {...userData, ...decodedData};
+                    localStorage.setItem('portfolioData', JSON.stringify(userData));
+                    showToast('Portfolio data loaded from URL!');
+                } catch (e) {
+                    console.error('Error decoding URL data:', e);
+                }
+            }
+            
+            // Populate the page with data
+            updatePageWithData(userData);
+            
+            // Populate the form with current data
+            populateForm(userData);
+        });
+
+        // Update page content with user data
+        function updatePageWithData(data) {
+            // Replace all placeholders with actual data
+            document.querySelectorAll('.name, .role, .description, .highlight-number, .copyright').forEach(element => {
+                let content = element.innerHTML;
+                
+                for (const key in data) {
+                    const placeholder = `{{${key}}}`;
+                    if (content.includes(placeholder)) {
+                        content = content.replace(new RegExp(placeholder, 'g'), data[key]);
+                    }
+                }
+                
+                element.innerHTML = content;
+            });
+            
+            // Update contact links
+            document.querySelector('.whatsapp').href = data.whatsapp;
+            document.querySelector('.email').href = `mailto:${data.email}`;
+            document.querySelector('.phone').href = `tel:${data.phone}`;
+            
+            // Update social links
+            document.querySelectorAll('.social-icons a').forEach((link, index) => {
+                const platforms = ['linkedin', 'github', 'dribbble', 'behance', 'twitter'];
+                if (index < platforms.length) {
+                    link.href = data[platforms[index]];
+                }
+            });
+        }
+
+        // Populate form with current data
+        function populateForm(data) {
+            for (const key in data) {
+                const input = document.getElementById(key);
+                if (input) {
+                    input.value = data[key];
+                }
+            }
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Open modal
+        editButton.addEventListener('click', function() {
+            modal.classList.add('active');
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Save form data
+        portfolioForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(portfolioForm);
+            const userData = {};
+            
+            for (const [key, value] of formData.entries()) {
+                userData[key] = value;
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('portfolioData', JSON.stringify(userData));
+            
+            // Update the page
+            updatePageWithData(userData);
+            
+            // Close modal
+            modal.classList.remove('active');
+            
+            // Show success message
+            showToast('Portfolio updated successfully!');
+        });
+
+        // Generate shareable link
+        generateLinkBtn.addEventListener('click', function() {
+            const formData = new FormData(portfolioForm);
+            const userData = {};
+            
+            for (const [key, value] of formData.entries()) {
+                userData[key] = value;
+            }
+            
+            // Convert to Base64
+            const encodedData = btoa(JSON.stringify(userData));
+            
+            // Generate URL
+            const currentUrl = window.location.href.split('?')[0];
+            const shareUrl = `${currentUrl}?data=${encodedData}`;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                showToast('Shareable link copied to clipboard!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const tempInput = document.createElement('input');
+                tempInput.value = shareUrl;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                showToast('Shareable link copied to clipboard!');
+            });
+        });
+
+        // Export as ZIP
+        exportZipBtn.addEventListener('click', function() {
+            const formData = new FormData(portfolioForm);
+            const userData = {};
+            
+            for (const [key, value] of formData.entries()) {
+                userData[key] = value;
+            }
+            
+            // Create ZIP file
+            const zip = new JSZip();
+            
+            // Add the main HTML file with replaced placeholders
+            let htmlContent = document.documentElement.outerHTML;
+            
+            // Replace placeholders with actual data
+            for (const key in userData) {
+                const placeholder = `{{${key}}}`;
+                htmlContent = htmlContent.replace(new RegExp(placeholder, 'g'), userData[key]);
+            }
+            
+            // Remove the edit button and modal from exported HTML
+            htmlContent = htmlContent.replace(/<button class="edit-button">[\s\S]*?<\/button>/, '');
+            htmlContent = htmlContent.replace(/<div class="modal-overlay" id="editor-modal">[\s\S]*?<\/div>/, '');
+            htmlContent = htmlContent.replace(/<div class="toast" id="toast"><\/div>/, '');
+            
+            zip.file("portfolio.html", htmlContent);
+            
+            // Generate and download ZIP
+            zip.generateAsync({type:"blob"}).then(function(content) {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(content);
+                link.download = "portfolio.zip";
+                link.click();
+                
+                showToast('Portfolio exported as ZIP!');
+            });
+        });
+
+        // Social share functionality
+        socialShareBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const userData = JSON.parse(localStorage.getItem('portfolioData')) || defaultData;
+            const text = `Check out ${userData.name}'s portfolio: ${userData.role}`;
+            const url = window.location.href;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: `${userData.name}'s Portfolio`,
+                    text: text,
+                    url: url,
+                })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing:', error));
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast('Portfolio URL copied to clipboard!');
+                });
+            }
+        });
+
+        // Add smooth interaction animations (from original code)
         document.querySelectorAll('.contact-btn, .cta-button').forEach(button => {
             button.addEventListener('mousedown', function() {
                 this.style.transform = 'scale(0.95)';
